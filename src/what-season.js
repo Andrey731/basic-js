@@ -18,7 +18,7 @@ function getSeason(date) {
   if (arguments.length == 0) {
     return 'Unable to determine the time of year!';
   }
-  if (Object.prototype.toString.call(date) === '[object Date]') {
+  if (!(date instanceof Date && !isNaN(date))) {
     throw new Error("Invalid date!");
   }
   let season;
@@ -76,8 +76,6 @@ function getSeason(date) {
   }
   return season;
 }
-
-console.log(getSeason(2019, 11, 01));
 
 module.exports = {
   getSeason
